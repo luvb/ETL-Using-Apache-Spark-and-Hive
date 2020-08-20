@@ -1,0 +1,36 @@
+# In the example, we will first send the data from our Linux file system to the data storage unit of the Hadoop ecosystem (HDFS) (for example, Extraction).
+# Then we will read the data we have written here with Spark and then we will apply a simple Transformation and write to Hive (Load). 
+
+# Hive is a substructure that allows us to query #the data in the hadoop ecosystem, which is stored in this environment. 
+# With this infrastructure, we can easily query the data in our big data environment using SQL language.
+
+#The data set looks lke below
+
+Column Name           	Data Type
+
+ORDERNUMBER	            Number
+QUANTITYORDERED	        Number
+PRICEEACH	              Number
+ORDERLINENUMBER       	Number
+SALES	                  Number
+ORDERDATE	              Date
+STATUS	                String
+QTR_ID	                Number
+MONTH_ID	              Number
+YEAR_ID               	Number
+PRODUCTLINE	            String
+MSRP	                  Number
+PRODUCTCODE           	String
+CUSTOMERNAME	          String
+PHONE	                  Number  
+ADDRESSLINE1	          String
+ADDRESSLINE2	          String
+CITY                  	String
+STATE	                  String
+POSTALCODE            	Number
+COUNTRY	                String
+TERRITORY             	String
+CONTACTLASTNAME	        String
+CONTACTFIRSTNAME       	String
+DEALSIZE	              String
+
