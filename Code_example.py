@@ -1,7 +1,7 @@
 # In the example, we will first send the data from our Linux file system to the data storage unit of the Hadoop ecosystem (HDFS) (for example, Extraction).
 # Then we will read the data we have written here with Spark and then we will apply a simple Transformation and write to Hive (Load). 
 
-# Hive is a substructure that allows us to query #the data in the hadoop ecosystem, which is stored in this environment. 
+# Hive is a substructure that allows us to query the data in the hadoop ecosystem, which is stored in this environment. 
 # With this infrastructure, we can easily query the data in our big data environment using SQL language.
 
 #The data set looks lke below
@@ -36,13 +36,15 @@ DEALSIZE	              String
 
 -------------------------------------------------Code example---------------------------------------
 
-# First, copy the sample data that we downloaded from Kaggle to HDFS. For this, let's create a directory in HDFS.
+# First, let's just create a directory in HDFS.
 
 hadoop fs -mkdir samplesales
 
-#copy the sample data in our local directory to hdfs.
+#copy the sample data in our local directory to hdfs
 
 hadoop fs -copyFromLocal sales_sample_data.csv samplesales
+
+# Let's just check if the data made it to the hdfs directory
 hadoop fs -ls samplesales/
 
 # start our PySpark interface and start processing the data with Spark
@@ -57,13 +59,13 @@ from pyspark.sql.functions import *
 hive_context = HiveContext(sc)
 sqlContext = SQLContext(sc)
 
-# let's create the line format in which we will keep our data.
+# let's create the line format in which we will keep our data. Think of it as column headers
 RecSales = Row('ordernumber','quantityordered','priceeach','orderlinenumber','sales',
 'orderdate','status','qtr_id','month_id','year_id','productline','msrp','productcode','customername',
 'phone','addressline1','addressline2','city','state','postalcode','country','territory','contactlastname','contactfirstname','dealsize')
 
-# Now it's time to read the data we received in HDFS and write it in a dataframe. Since the columns are sperated by the delimeter="," , 
-# and we must specify this delimeter when loading the data.
+# Now it's time to read the data we received in HDFS and write it in a dataframe (Spark RDD). Since the columns are sperated by the delimeter="," , 
+# we must specify this delimeter when loading the data.
 # After data is in the data frame, we give a name and save it as a temp table. We will be able to use this name later when writing SQL in hive_context or sqlContext.
 
 
